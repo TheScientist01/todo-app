@@ -1,0 +1,14 @@
+{% extends "base.html" %}
+
+{% block title %}
+    <title>Update</title>
+{% endblock %}
+
+{% block content %}
+    <form method="post" action="{%url 'update' pk=task.id%}">
+        {%csrf_token%}
+        <input type="text" value="{{task.title}}" name="title">
+        <input type="checkbox" name="check" {%if task.is_complete %} checked {%else%} '' {%endif%}>
+        <button type="submit" class="btn btn-primary">Update</button>
+    </form>
+{% endblock %}
